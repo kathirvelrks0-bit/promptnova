@@ -1,24 +1,9 @@
 <!DOCTYPE html>
-<html> <img id="resultImage" />
+<html>
 <head>
 <title>PromptNova</title>
-<style>
-  #resultImage {
-  width: 90%;
-  max-width: 500px;
-  margin-top: 20px;
-  border-radius: 15px;
-  animation: zoomEffect 6s ease-in-out infinite alternate;
-}
 
-@keyframes zoomEffect {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.1);
-  }
-  }
+<style>
 body {
   background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
   color: white;
@@ -26,12 +11,14 @@ body {
   text-align: center;
   padding: 50px;
 }
+
 textarea {
   width: 80%;
   height: 120px;
   padding: 10px;
   border-radius: 10px;
 }
+
 button {
   padding: 10px 20px;
   background: purple;
@@ -40,35 +27,41 @@ button {
   border-radius: 10px;
   cursor: pointer;
 }
-video {
+
+#resultImage {
+  width: 90%;
+  max-width: 500px;
   margin-top: 20px;
-  width: 80%;
+  border-radius: 15px;
+  animation: zoomEffect 6s ease-in-out infinite alternate;
+}
+
+@keyframes zoomEffect {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
 }
 </style>
+
 </head>
+
 <body>
 
 <h1>🚀 PromptNova</h1>
 <h3>Turn Words Into Worlds</h3>
 
-<textarea id="prompt" placeholder="Enter your video idea..."></textarea>
+<textarea id="prompt" placeholder="Enter your idea..."></textarea>
 <br><br>
-<button onclick="generate()">Generate Video</button>
 
-<div id="result"></div>
+<button onclick="generate()">Generate</button>
+
+<br><br>
+
+<img id="resultImage" />
 
 <script>
-  const response = await fetch("/api/generate", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ prompt })
-});
-
-const data = await response.json();
-document.getElementById("resultImage").src = data.image;
 function generate() {
-  document.getElementById("result").innerHTML =
-    '<video controls src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4"></video>';
+  document.getElementById("resultImage").src =
+    "https://picsum.photos/800/500";
 }
 </script>
 
