@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>PromptNova</title>
+
   <style>
     body {
       background: black;
@@ -18,31 +19,40 @@
       color: white;
       border: none;
       border-radius: 10px;
+      cursor: pointer;
+    }
+
+    #imageWrapper {
+      display: inline-block;
+      overflow: hidden;
+      border-radius: 15px;
+      margin-top: 20px;
     }
 
     #resultImage {
       width: 300px;
-      margin-top: 20px;
-      border-radius: 15px;
-      animation: zoomEffect 4s infinite alternate;
+      display: block;
+      animation: zoomEffect 3s ease-in-out infinite alternate;
     }
 
     @keyframes zoomEffect {
-      from { transform: scale(1); }
-      to { transform: scale(1.2); }
+      0%   { transform: scale(1); }
+      100% { transform: scale(1.5); }
     }
   </style>
 </head>
 
 <body>
 
-<h1>PromptNova Test</h1>
+<h1>🚀 PromptNova Test</h1>
 
 <button onclick="showImage()">Show Image</button>
 
 <br><br>
 
-<img id="resultImage" src="https://picsum.photos/400/300">
+<div id="imageWrapper">
+  <img id="resultImage" src="https://picsum.photos/400/300">
+</div>
 
 <script>
 function showImage() {
