@@ -10,32 +10,23 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch("https://api.openai.com/v1/images/generations", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${process.env.OPENAI_API_KEY}`
       },
       body: JSON.stringify({
-        model: "gpt-4o-mini",
-        messages: [
-          {
-            role: "system",
-            content: "You are a professional AI video script generator."
-          },
-          {
-            role: "user",
-            content: `Create a 5-second cinematic video script for: ${prompt}`
-          }
-        ],
-        max_tokens: 300
+        model: "gpt-image-1",
+        prompt: `Cinematic animated movie style, vibrant colors, detailed, ${prompt}`,
+        size: "1024x1024"
       })
     });
 
     const data = await response.json();
 
     res.status(200).json({
-      result: data.choices?.[0]?.message?.content || "No response"
+      image: data.data?.[0]?.url
     });
 
   } catch (error) {
