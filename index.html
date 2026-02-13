@@ -1,67 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>PromptNova</title>
+  <title>PromptNova</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      text-align: center;
+      font-family: Arial;
+      padding: 40px;
+    }
 
-<style>
-body {
-  background: linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-  color: white;
-  font-family: Arial;
-  text-align: center;
-  padding: 50px;
-}
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background: purple;
+      color: white;
+      border: none;
+      border-radius: 10px;
+    }
 
-textarea {
-  width: 80%;
-  height: 120px;
-  padding: 10px;
-  border-radius: 10px;
-}
+    #resultImage {
+      width: 300px;
+      margin-top: 20px;
+      border-radius: 15px;
+      animation: zoomEffect 4s infinite alternate;
+    }
 
-button {
-  padding: 10px 20px;
-  background: purple;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-#resultImage {
-  width: 90%;
-  max-width: 500px;
-  margin-top: 20px;
-  border-radius: 15px;
-  animation: zoomEffect 6s ease-in-out infinite alternate;
-}
-
-@keyframes zoomEffect {
-  from { transform: scale(1); }
-  to { transform: scale(1.1); }
-}
-</style>
-
+    @keyframes zoomEffect {
+      from { transform: scale(1); }
+      to { transform: scale(1.2); }
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>🚀 PromptNova</h1>
-<h3>Turn Words Into Worlds</h3>
+<h1>PromptNova Test</h1>
 
-<textarea id="prompt" placeholder="Enter your idea..."></textarea>
-<br><br>
-
-<button onclick="generate()">Generate</button>
+<button onclick="showImage()">Show Image</button>
 
 <br><br>
 
-<img id="resultImage" />
+<img id="resultImage" src="https://picsum.photos/400/300">
 
 <script>
-function generate() {
+function showImage() {
   document.getElementById("resultImage").src =
-    "https://picsum.photos/800/500";
+    "https://picsum.photos/400/300?random=" + Math.random();
 }
 </script>
 
