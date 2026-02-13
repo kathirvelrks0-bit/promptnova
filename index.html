@@ -12,6 +12,15 @@
       padding: 40px;
     }
 
+    textarea {
+      width: 80%;
+      height: 100px;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
     button {
       padding: 10px 20px;
       font-size: 18px;
@@ -20,6 +29,7 @@
       border: none;
       border-radius: 10px;
       cursor: pointer;
+      margin-top: 15px;
     }
 
     #imageWrapper {
@@ -31,35 +41,42 @@
 
     #resultImage {
       width: 300px;
-      display: block;
+      display: none;
       animation: zoomEffect 3s ease-in-out infinite alternate;
     }
 
     @keyframes zoomEffect {
       0%   { transform: scale(1); }
-      100% { transform: scale(1.5); }
+      100% { transform: scale(1.4); }
     }
   </style>
 </head>
 
 <body>
 
-<h1>🚀 PromptNova Test</h1>
+<h1>🚀 PromptNova</h1>
+<h3>Turn Words Into Images</h3>
 
-<button onclick="showImage()">Show Image</button>
+<textarea id="prompt" placeholder="Enter your idea here..."></textarea>
+<br>
+
+<button onclick="generate()">Generate</button>
 
 <br><br>
 
 <div id="imageWrapper">
-  <img id="resultImage" src="https://picsum.photos/400/300">
+  <img id="resultImage">
 </div>
 
 <script>
-function showImage() {
-  document.getElementById("resultImage").src =
-    "https://picsum.photos/400/300?random=" + Math.random();
-}
-</script>
+function generate() {
+  const text = document.getElementById("prompt").value;
 
-</body>
-</html>
+  if (text.trim() === "") {
+    alert("Please enter a prompt!");
+    return;
+  }
+
+  const img = document.getElementById("resultImage");
+  img.style.display = "block";
+  img.src = "https://picsum
